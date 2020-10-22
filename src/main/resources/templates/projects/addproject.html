@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: Header"></head>
+<body>	
+    <nav th:replace="layouts :: Navigate"></nav>
+	<div class="container">
+		<form action="/projects/save" th:object="${project}"method="POST">		
+            <input type="text" placeholder="Project Name" th:field="${project.name}">
+            <select th:field="${project.stage}">
+                <option th:value="NOTSTARTED"> Not Started</option>
+                <option th:value="INPROGRESS"> In Progress</option>
+                <option th:value="COMPLETED"> Completed</option>
+            </select>
+            <textarea type="text" th:field="${project.description}"placeholder="Enter Project Description"></textarea>
+            <button type="submit">Create Project</button>
+            <select th:field="*{employees}" multiple="multiple">
+                <option th:each="employee: ${theEmployees}" th:value="${employee.employeeId}" th:text="${employee.firstName}"></option>
+            </select>
+		</form>
+	</div>
+	
+</body>
+
+</html>

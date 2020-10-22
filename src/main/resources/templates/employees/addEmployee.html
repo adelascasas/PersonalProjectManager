@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: Header"></head>
+
+<body>	
+    <nav th:replace="layouts :: Navigate"></nav>
+	<div class="container">
+		<form action="/employees/save" th:object="${employee}"method="POST">		
+            <input type="text" placeholder="First Name" th:field="${employee.firstName}">
+            <input type="text" placeholder="Last Name" th:field="${employee.lastName}">
+            <input type="text" placeholder="Email" th:field="${employee.email}">
+            <select th:field="*{projects}" multiple="multiple">
+                <option th:each="project: ${theProjects}" th:value="${project.projectId}" th:text="${project.name}"></option>
+            </select>
+            <button type="submit">Add Employee</button>
+		</form>
+	</div>
+	
+</body>
+
+</html>

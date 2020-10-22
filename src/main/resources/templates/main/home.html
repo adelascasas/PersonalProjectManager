@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: Header"></head>
+
+<body>
+    <nav th:replace="layouts :: Navigate"></nav>
+    <div class="container">
+        <div>
+            <h4>Current Projects</h4>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Name</th>
+                    <th>Stage</th>
+                </thead>
+                <tbody>
+                    <tr th:each="aProject: ${projects}" >
+                        <td th:text="${aProject.name}">
+                        <td th:text="${aProject.stage}">
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4>Employees</h4>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </thead>
+                <tbody>
+                    <tr th:each="aEmployee: ${employees}" >
+                        <td th:text="${aEmployee.firstName}">
+                        <td th:text="${aEmployee.lastName}">
+                        <td th:text="${aEmployee.email}">
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
